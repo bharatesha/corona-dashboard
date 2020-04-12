@@ -4,7 +4,7 @@
 
   "Id": "ಕ್ರಮ ಸಂಖ್ಯೆ",
   "District": "ಜಿಲ್ಲೆ",
-  "Confirmed": "ದೃಡಪಡಿಸಲಾಗಿದೆ",
+  "Confirmed": "ದೃಢಪಡಿಸಲಾಗಿದೆ",
 
   "Bengaluru": "ಬೆಂಗಳೂರು",
   "Bagalkote":"ಬಾಗಲಕೋಟೆ",
@@ -38,6 +38,12 @@
   "Tumakuru":"ತುಮಕೂರು",
   "Udupi":"ಉಡುಪಿ",
   "Uttara Kannada":"ಉತ್ತರ ಕನ್ನಡ",
-  "Yadgir":"ಯಾದಗಿರಿ"
+  "Yadgir":"ಯಾದಗಿರಿ",
 
+
+  "Confirmed": "ದೃಢಪಡಿಸಲಾಗಿದೆ",
+  "Active": "ಸಕ್ರಿಯ",
+  "Recovered": "ಚೇತರಿಕೆ",
+  "Deceased": "ಮೃತರು",
+  "Tested": "ಪರೀಕ್ಷಿಸಲಾಗಿದೆ"
 }

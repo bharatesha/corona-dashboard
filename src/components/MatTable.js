@@ -56,7 +56,6 @@ function MatTable(props) {
 
                 );
 
-               return null;
                         })}
 
           </TableBody>

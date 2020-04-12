@@ -3,6 +3,8 @@ import axios from 'axios';
 import { withNamespaces } from 'react-i18next';
 
 import MatTable from './MatTable';
+import EnhancedTable from './statstable';
+import Overview from './overview';
 
 function Home({props,t}) {
 
@@ -51,15 +53,27 @@ function Home({props,t}) {
 
 
   return (
-    <React.Fragment>
-      <div className="Home">
-              <h1>{t('covidTitle')}</h1>
+    <div>
+      {fetched && (
+        <React.Fragment>
+          <div className="Home">
+                  <h1>{t('covidTitle')}</h1>
 
-               <MatTable
-                         stateDistrictWiseData={stateDistrictWiseData}
-                         />
-      </div>
-    </React.Fragment>
+
+                  <Overview
+                                  states={states}
+                                  stateDistrictWiseData={stateDistrictWiseData}
+                                  stateTestData={stateTestData}
+                                />
+
+
+                  <MatTable
+                             stateDistrictWiseData={stateDistrictWiseData}
+                             />
+          </div>
+        </React.Fragment>
+        )}
+    </div>
   );
 }
 
