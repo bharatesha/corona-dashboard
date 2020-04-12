@@ -7,6 +7,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import i18n from '../i18n';
+
 function MatTable(props) {
 
     const [districts, setDistricts] = useState({});
@@ -33,9 +35,9 @@ function MatTable(props) {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell align="left">District</TableCell>
-              <TableCell align="center">Confirmed</TableCell>
+              <TableCell>{i18n.t("Id")}</TableCell>
+              <TableCell align="left">{i18n.t("District")}</TableCell>
+              <TableCell align="center">{i18n.t("Confirmed")}</TableCell>
 
             </TableRow>
           </TableHead>
@@ -48,13 +50,14 @@ function MatTable(props) {
                   <TableCell component="th" scope="row">
                   {index+1}
                   </TableCell>
-                  <TableCell align="left">{state}</TableCell>
+                  <TableCell align="left"> {i18n.t(state)}</TableCell>
                   <TableCell align="center">{result[state].confirmed}</TableCell>
                 </TableRow>
 
                 );
 
-            })}
+               return null;
+                        })}
 
           </TableBody>
         </Table>

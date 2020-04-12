@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { withNamespaces } from 'react-i18next';
 
 import MatTable from './MatTable';
 
-function Home(props) {
+function Home({props,t}) {
 
     const [states, setStates] = useState([]);
     ///const [timeseries, setTimeseries] = useState([]);
@@ -52,7 +53,7 @@ function Home(props) {
   return (
     <React.Fragment>
       <div className="Home">
-              <h1>COVID-19 Tracker</h1>
+              <h1>{t('covidTitle')}</h1>
 
                <MatTable
                          stateDistrictWiseData={stateDistrictWiseData}
@@ -62,4 +63,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default withNamespaces()(Home);
