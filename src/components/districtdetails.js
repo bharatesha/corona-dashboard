@@ -49,7 +49,7 @@ export default function (props) {
          <div style={{'marginTop': '50px','width': '100%','marginBottom': '20px', 'textTransform': 'lowercase' }}>
            <MaterialTable
              columns={[
-               { title: "ಘೋಷಿತ ದಿನಾಂಕ", field: "dateannounced", type: "date", defaultSort:"asc" },
+               { title: "ಘೋಷಿತ ದಿನಾಂಕ", field: "dateannounced", type: "date", defaultSort:"desc", customSort: (a, b) => Date.parse(a.dateannounced) - Date.parse(b.dateannounced) },
                { title: "ಜಿಲ್ಲೆ", field: "detecteddistrict" },
                { title: "ನಗರ", field: "detectedcity" },
                { title: "ಟಿಪ್ಪಣಿಗಳು", field: "notes" }
