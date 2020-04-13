@@ -25,7 +25,7 @@ function MatTable(props) {
     for (var k in districts["Karnataka"]) {
             if (districts["Karnataka"].hasOwnProperty(k)) {
             //console.log(k);
-               console.log(districts["Karnataka"]["districtData"]);
+              /// console.log(districts["Karnataka"]["districtData"]);
                result = districts["Karnataka"]["districtData"];
             }
         }

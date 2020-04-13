@@ -3,8 +3,8 @@ import axios from 'axios';
 import { withNamespaces } from 'react-i18next';
 
 import MatTable from './MatTable';
-import EnhancedTable from './statstable';
 import Overview from './overview';
+import DistrictDetails from './districtdetails';
 
 function Home({props,t}) {
 
@@ -66,10 +66,12 @@ function Home({props,t}) {
                                   stateTestData={stateTestData}
                                 />
 
-
                   <MatTable
                              stateDistrictWiseData={stateDistrictWiseData}
                              />
+                   <div>
+                  <DistrictDetails/>
+                  </div>
           </div>
         </React.Fragment>
         )}

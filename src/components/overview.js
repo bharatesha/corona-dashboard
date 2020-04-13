@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import {formatDistance, format, parse} from 'date-fns';
 import {formatNumber} from '../utils/common-functions';
 import {formatDate, formatDateAbsolute} from '../utils/common-functions';
@@ -49,9 +49,9 @@ export default function ({
   }, [panelRegion, stateTestData, testObj]);
 
   return (
-    <div className="MapExplorer fadeInUp" style={{animationDelay: '1.5s'}}>
+    <div className="MapExplorer " style={{animationDelay: '0.1s'}}>
 
-    <div className="meta fadeInUp" style={{animationDelay: '2.4s'}}>
+    <div className="meta" style={{animationDelay: '0.1s'}}>
                    {lastupdatedtime && (
                             <div>
 
@@ -78,7 +78,7 @@ export default function ({
 
       <div className="map-stats">
 
-        <div className="stats fadeInUp" style={{animationDelay: '2s'}}>
+        <div className="stats fadeInUp" style={{animationDelay: '0.1s'}}>
           <h5>{i18n.t("Confirmed")}</h5>
           <div className="stats-bottom">
             <h1>{formatNumber(panelRegion.confirmed)} </h1>
@@ -88,7 +88,7 @@ export default function ({
 
         <div
           className="stats is-blue fadeInUp"
-          style={{animationDelay: '2.1s'}}
+          style={{animationDelay: '0.1s'}}
         >
           <h5>{i18n.t("Active")}</h5>
           <div className="stats-bottom">
@@ -99,7 +99,7 @@ export default function ({
 
         <div
           className="stats is-green fadeInUp"
-          style={{animationDelay: '2.2s'}}
+          style={{animationDelay: '0.1s'}}
         >
           <h5>{i18n.t("Recovered")}</h5>
           <div className="stats-bottom">
@@ -110,7 +110,7 @@ export default function ({
 
         <div
           className="stats is-gray fadeInUp"
-          style={{animationDelay: '2.3s'}}
+          style={{animationDelay: '0.1s'}}
         >
           <h5>{i18n.t("Deceased")}</h5>
           <div className="stats-bottom">
@@ -122,7 +122,7 @@ export default function ({
         {
           <div
             className="stats is-purple tested fadeInUp"
-            style={{animationDelay: '2.4s'}}
+            style={{animationDelay: '0.1s'}}
           >
              <h5>{i18n.t("Tested")}</h5>
             <div className="stats-bottom">
