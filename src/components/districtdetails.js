@@ -40,7 +40,7 @@ export default function (props) {
       return data?.filter(
         e => (
           // Added initial opening brace
-          (e.detectedstate.toLowerCase().indexOf(lcText) == 0)
+          (e.detectedstate.toLowerCase().indexOf(lcText) === 0)
         )// added closing brace
       );
     }
@@ -56,6 +56,10 @@ export default function (props) {
              ]}
              data={patients}
              title="ಇತ್ತೀಚಿನ ಮಾಹಿತಿಗಳು"
+
+            options={{
+                   pageSizeOptions : [5, 10, 50, 100, 200]
+               }}
 
            />
          </div>
