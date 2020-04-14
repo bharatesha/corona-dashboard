@@ -4,7 +4,7 @@ import React from 'react';
 import i18n from '../i18n';
 
 import {filterJson} from '../utils/common-functions';
-import DistrictDetails from './districtdetails';
+import CityDetails from './citydetails';
 
 export default function({
     stateDistrictWiseData,
@@ -87,7 +87,7 @@ export default function({
                                                   detailPanel={rowData => {
                                                    return (
                                                      <div>
-                                                            <DistrictDetails
+                                                            <CityDetails
                                                                   data={getCityPatients(rowData.district, rowData.city)}
                                                                   isSimple={true}
                                                            />

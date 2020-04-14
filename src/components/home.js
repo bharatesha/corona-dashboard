@@ -7,6 +7,8 @@ import DistrictDetails from './districtdetails';
 import CoronaTableData from './coronaTableData';
 import {filterJson} from '../utils/common-functions';
 
+import { FacebookShareButton, FacebookIcon, WhatsappIcon, WhatsappShareButton } from  "react-share";
+
 function Home({props,t}) {
 
     const [states, setStates] = useState([]);
@@ -56,6 +58,10 @@ function Home({props,t}) {
     }
   };
 
+
+const shareUrl = 'http://github.com';
+const title = 'Corona Updates';
+
   return (
     <div>
       {fetched && (
@@ -63,6 +69,25 @@ function Home({props,t}) {
           <div className="Home">
                           <h1>{t('covidTitle')}</h1>
 
+                          <div>
+                            <WhatsappShareButton style={{marginRight:'30px'}}
+                               url={shareUrl}
+                               title={title}
+                               separator=":: "
+                               className="Demo__some-network__share-button"
+                             >
+                                  <WhatsappIcon size={32} round />
+                             </WhatsappShareButton>
+
+                             <FacebookShareButton
+                                  url={shareUrl}
+                                  title={title}
+                                  separator=":: "
+                                  className="Demo__some-network__share-button"
+                                >
+                                 <FacebookIcon size={32} round />
+                            </FacebookShareButton>
+                        </div>
 
                   <Overview
                                   states={states}
