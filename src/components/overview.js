@@ -40,7 +40,7 @@ export default function ({
   };
 
 
- const {name, lastupdatedtime} = currentHoveredRegion;
+ const {lastupdatedtime} = currentHoveredRegion;
 
   useEffect(() => {
     setTestObj(

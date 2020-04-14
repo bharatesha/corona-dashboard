@@ -4,14 +4,14 @@ import React from 'react';
 import i18n from '../i18n';
 
 import {filterJson} from '../utils/common-functions';
+import DistrictDetails from './districtdetails';
 
 export default function({
     stateDistrictWiseData,
-    patients
+    statePatients
 }){
 
    let districts = stateDistrictWiseData["Karnataka"]["districtData"];
-   let statePatients = filterJson(patients.raw_data,'detectedstate', 'Karnataka');
    let tableData = [];
 
     Object.keys(districts).forEach((key) => {
@@ -25,8 +25,8 @@ export default function({
       return { district, confirmed, changed, origdistrict };
     }
 
-    function createChildData(city, count) {
-          return { city, count };
+    function createChildData(district, city, count) {
+          return { district, city, count };
     }
 
     function getDistrictDetails(district){
@@ -43,12 +43,23 @@ export default function({
         });
 
         resultMap.forEach((k, v)=>{
-            result.push(createChildData(v, k));
+            result.push(createChildData(district, v, k));
         });
 
         return result;
     }
 
+    function getCityPatients(district, city){
+
+      let result = null;
+      if(city !== 'Unknown'){
+           result = filterJson(statePatients,'detectedcity', city)
+      }else{
+            result = statePatients.filter( patient => patient.detecteddistrict === district);
+            result = result.filter( patient => patient.detectedcity === "");
+      }
+      return result;
+    }
 
     return (
         <div>
@@ -65,7 +76,7 @@ export default function({
 
                        	  detailPanel={rowData => {
                              return (
-                               <div>
+                               <div style={{marginLeft: '50px'}}>
                                         <MaterialTable
                                                   columns={[
                                                     { title: 'ನಗರ', field: 'city' },
@@ -73,7 +84,18 @@ export default function({
 
                                                   ]}
                                                   data={getDistrictDetails(rowData.origdistrict)}
-                                                   options={{
+                                                  detailPanel={rowData => {
+                                                   return (
+                                                     <div>
+                                                            <DistrictDetails
+                                                                  data={getCityPatients(rowData.district, rowData.city)}
+                                                                  isSimple={true}
+                                                           />
+                                                     </div>
+                                                   )
+                                                 }}
+
+                                                  options={{
                                                         showTitle:false,
                                                         toolbar:false,
                                                         search:false,

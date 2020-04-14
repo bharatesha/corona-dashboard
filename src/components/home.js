@@ -5,6 +5,7 @@ import { withNamespaces } from 'react-i18next';
 import Overview from './overview';
 import DistrictDetails from './districtdetails';
 import CoronaTableData from './coronaTableData';
+import {filterJson} from '../utils/common-functions';
 
 function Home({props,t}) {
 
@@ -15,6 +16,8 @@ function Home({props,t}) {
     const [stateDistrictWiseData, setStateDistrictWiseData] = useState({});
     const [activityLog, setActivityLog] = useState([]);
     const [patients, setPatients] = useState([]);
+
+    const [patientStateData, setPatientStateData] = useState([]);
 
   const [fetched, setFetched] = useState(false);
 
@@ -46,12 +49,12 @@ function Home({props,t}) {
       setStateDistrictWiseData(stateDistrictWiseResponse.data);
       setActivityLog(updateLogResponse.data);
       setPatients(patients.data);
+      setPatientStateData(filterJson(patients.data.raw_data,'detectedstate', 'Karnataka'));
       setFetched(true);
     } catch (err) {
       console.log(err);
     }
   };
-
 
   return (
     <div>
@@ -69,12 +72,13 @@ function Home({props,t}) {
 
                   <CoronaTableData
                              stateDistrictWiseData={stateDistrictWiseData}
-                             patients={patients}
+                             statePatients={patientStateData}
                              />
-
-                  <DistrictDetails
-                        patients={patients}
-                  />
+                   <div style={{'marginTop': '50px','width': '100%','marginBottom': '20px' }}>
+                        <DistrictDetails
+                            data={patientStateData}
+                        />
+                   </div>
           </div>
         </React.Fragment>
         )}

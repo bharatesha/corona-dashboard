@@ -1,18 +1,15 @@
 import React from 'react';
 import MaterialTable from "material-table";
 
-import i18n from '../i18n';
-
-import {filterJson} from '../utils/common-functions';
-
 export default function ({
-    patients
+    data,
+    isSimple
 }){
 
-    let tableData = filterJson(patients.raw_data,'detectedstate', 'Karnataka').sort(function (l, r) { return l.patientnumber - r.patientnumber;});
+    let pageSize = isSimple?5:5;
+    isSimple=!isSimple;
 
     return (
-         <div style={{'marginTop': '50px','width': '100%','marginBottom': '20px' }}>
            <MaterialTable
              columns={[
                { title: "ಸಂಖ್ಯೆ", field: "statepatientnumber",defaultSort:"desc",
@@ -42,16 +39,21 @@ export default function ({
                //{ title: "ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ", field: "currentstatus" },
                { title: "ಟಿಪ್ಪಣಿಗಳು", field: "notes" }
              ]}
-             data={tableData}
+             data={data}
              title="ಇತ್ತೀಚಿನ ಮಾಹಿತಿಗಳು"
 
             options={{
-                   pageSizeOptions : [5, 10, 50, 100, 200],
+                   pageSizeOptions : [5, 10, 50, data.length],
                    overflowX: 'auto',
-                   pageSize:10
+                   pageSize:parseInt(pageSize),
+                   showTitle:Boolean(isSimple),
+                   toolbar:Boolean(isSimple),
+                   search:Boolean(isSimple),
+                   paging:Boolean(isSimple),
+                   header:Boolean(isSimple)
+
                }}
            />
-         </div>
        );
 
 }
