@@ -36,7 +36,7 @@ export default function({
         let result = [];
 
         districtData.forEach((item)=>{
-           let city = item.detectedcity?item.detectedcity:'Unknown';
+           let city = item.detectedcity?item.detectedcity.trim():'Unknown';
            let count = resultMap.get(city);
            count = parseInt(count?count:0)+1;
            resultMap.set(city, count);
