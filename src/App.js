@@ -13,6 +13,7 @@ function App({ t }) {
   return (
     <div className="App">
         <Home/>
+        <h4>{t('footinfo')}  <a href="https://covid19.karnataka.gov.in/en/">covid19.karnataka.gov.in</a> </h4>
     </div>
   );
 }

@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { withNamespaces } from 'react-i18next';
 
-import MatTable from './MatTable';
 import Overview from './overview';
 import DistrictDetails from './districtdetails';
+import CoronaTableData from './coronaTableData';
 
 function Home({props,t}) {
 
@@ -14,6 +14,7 @@ function Home({props,t}) {
     const [stateTestData, setStateTestData] = useState({});
     const [stateDistrictWiseData, setStateDistrictWiseData] = useState({});
     const [activityLog, setActivityLog] = useState([]);
+    const [patients, setPatients] = useState([]);
 
   const [fetched, setFetched] = useState(false);
 
@@ -30,11 +31,13 @@ function Home({props,t}) {
         stateDistrictWiseResponse,
         updateLogResponse,
         stateTestResponse,
+        patients
       ] = await Promise.all([
         axios.get('https://api.covid19india.org/data.json'),
         axios.get('https://api.covid19india.org/state_district_wise.json'),
         axios.get('https://api.covid19india.org/updatelog/log.json'),
         axios.get('https://api.covid19india.org/state_test_data.json'),
+        axios.get('https://api.covid19india.org/raw_data.json'),
       ]);
       setStates(response.data.statewise);
       ///setTimeseries(validateCTS(response.data.cases_time_series));
@@ -42,6 +45,7 @@ function Home({props,t}) {
       setStateTestData(stateTestResponse.data.states_tested_data.reverse());
       setStateDistrictWiseData(stateDistrictWiseResponse.data);
       setActivityLog(updateLogResponse.data);
+      setPatients(patients.data);
       setFetched(true);
     } catch (err) {
       console.log(err);
@@ -49,15 +53,12 @@ function Home({props,t}) {
   };
 
 
-
-
-
   return (
     <div>
       {fetched && (
         <React.Fragment>
           <div className="Home">
-                  <h1>{t('covidTitle')}</h1>
+                          <h1>{t('covidTitle')}</h1>
 
 
                   <Overview
@@ -66,12 +67,14 @@ function Home({props,t}) {
                                   stateTestData={stateTestData}
                                 />
 
-                  <MatTable
+                  <CoronaTableData
                              stateDistrictWiseData={stateDistrictWiseData}
+                             patients={patients}
                              />
-                   <div>
-                  <DistrictDetails/>
-                  </div>
+
+                  <DistrictDetails
+                        patients={patients}
+                  />
           </div>
         </React.Fragment>
         )}

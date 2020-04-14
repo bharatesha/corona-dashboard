@@ -119,3 +119,15 @@ export const formatNumber = (value) => {
   const numberFormatter = new Intl.NumberFormat('en-IN');
   return isNaN(value) ? '-' : numberFormatter.format(value);
 };
+
+
+
+export function filterJson(data, key, text){
+      const lcText = text.toString().toLowerCase(); // calculate this once
+      return data?.filter(
+        e => (
+          // Added initial opening brace
+          (e[key].toLowerCase().indexOf(lcText) === 0)
+        )// added closing brace
+      );
+    }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {formatDistance, format, parse} from 'date-fns';
 import {formatNumber} from '../utils/common-functions';
-import {formatDate, formatDateAbsolute} from '../utils/common-functions';
+import {formatDate, formatDateAbsolute, filterJson} from '../utils/common-functions';
 
 import i18n from '../i18n';
 
@@ -17,7 +17,9 @@ export default function ({
 
 
   useEffect(() => {
-    const region = getRegionFromState(states[12]);
+    const region = getRegionFromState(filterJson(states,'state','Karnataka')[0]);
+    //console.log(filterJson(states,'state','Karnataka'));
+    //const region = getRegionFromState(filterJson(states));
     setPanelRegion(region);
     setCurrentHoveredRegion(region);
   }, [states]);
