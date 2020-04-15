@@ -59,8 +59,8 @@ function Home({props,t}) {
   };
 
 
-const shareUrl = 'http://github.com';
-const title = 'Corona Updates';
+const shareUrl = 'http://www.noldz.com';
+const title = t('covidShareTitle');
 
   return (
     <div>
