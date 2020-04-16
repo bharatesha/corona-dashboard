@@ -75,7 +75,7 @@ const result = () => {
                                     : formatDateAbsolute(lastupdatedtime)
                                 }
                               >
-                                {i18n.t('Karnataka')} :
+                                <b>{i18n.t('Karnataka')} </b>:
                                 {isNaN(Date.parse(formatDate(lastupdatedtime)))
                                   ? ''
                                   : formatDistance(
@@ -125,21 +125,14 @@ const result = () => {
 
         {
           <div
-            className="stats is-purple tested fadeInUp"
+            className="stats is-purple fadeInUp"
             style={{animationDelay: '0.1s'}}
           >
              <h5>{i18n.t("Tested")}</h5>
             <div className="stats-bottom">
               <h1>{formatNumber(testObj?.totaltested)}</h1>
             </div>
-            <h6 className="timestamp">
-              {!isNaN(new Date(testObj?.updatedon))
-                ? `On ${format(
-                    parse(testObj?.updatedon, 'dd/MM/yyyy', new Date()),
-                    'dd MMM'
-                  )}`
-                : ''}
-            </h6>
+
           </div>
         }
 

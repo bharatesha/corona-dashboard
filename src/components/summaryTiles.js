@@ -15,7 +15,7 @@ function SummaryTiles({
     return (
        <div className="overviewstats">
          <h3>
-            {i18n.t(title)} : <span className="subtitle">about {lastupdated} Ago </span>
+           <b> {i18n.t(title)} </b>: <span className="subtitle">about {lastupdated} Ago </span>
          </h3>
 
          <div className="map-stats" style={{marginTop:'5px'}}>
