@@ -1287,6 +1287,12 @@ table {
         font-weight: 600;
       }
 
+      &.is-steelblue {
+            background: steelblue;
+            h1, h5,
+            h6 {color: $white;}
+       }
+
       &.is-green {
         background: $green-light;
         h5,
@@ -3477,4 +3483,18 @@ table.MuiTable-root {
 
 td {
   text-align: center !important;
+}
+
+.overviewstats {
+
+    h3 {
+      margin: 10px 0px 5px 0px;
+      text-align: left;
+    }
+}
+
+.subtitle {
+  vertical-align: top;
+  font-weight: 400;
+  font-size: 0.5em;
 }
