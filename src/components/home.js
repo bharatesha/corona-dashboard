@@ -6,6 +6,8 @@ import Overview from './overview';
 import DistrictDetails from './districtdetails';
 import CoronaTableData from './coronaTableData';
 import {filterJson} from '../utils/common-functions';
+import TitleBanner from './titleBanner';
+
 
 import { FacebookShareButton, FacebookIcon, WhatsappIcon, WhatsappShareButton } from  "react-share";
 
@@ -88,6 +90,8 @@ const title = t('covidShareTitle');
                                  <FacebookIcon size={32} round />
                             </FacebookShareButton>
                         </div>
+
+                        <TitleBanner activityLog={activityLog} />
 
                   <Overview
                                   states={states}

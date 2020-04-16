@@ -112,7 +112,7 @@ export default function({
 
                         options={{
                                pageSizeOptions : [5, 10, tableData.length],
-                               pageSize:10,
+                               pageSize:5,
 
                            }}
                        />
