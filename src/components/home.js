@@ -69,7 +69,7 @@ const title = t('covidShareTitle');
       {fetched && (
         <React.Fragment>
           <div className="Home">
-                          <h1>{t('covidTitle')}</h1>
+                          <h1 style={{fontSize:'1.6em'}}>{t('covidTitle')}</h1>
 
                           <div>
                             <WhatsappShareButton style={{marginRight:'30px'}}
@@ -78,7 +78,7 @@ const title = t('covidShareTitle');
                                separator=":: "
                                className="Demo__some-network__share-button"
                              >
-                                  <WhatsappIcon size={32} round />
+                                  <WhatsappIcon size={50} round />
                              </WhatsappShareButton>
 
                              <FacebookShareButton
@@ -87,7 +87,7 @@ const title = t('covidShareTitle');
                                   separator=":: "
                                   className="Demo__some-network__share-button"
                                 >
-                                 <FacebookIcon size={32} round />
+                                 <FacebookIcon size={50} round />
                             </FacebookShareButton>
                         </div>
 
