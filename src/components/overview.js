@@ -4,13 +4,15 @@ import {formatDistance, format, parse} from 'date-fns';
 import {formatNumber} from '../utils/common-functions';
 import {formatDate, formatDateAbsolute, filterJson} from '../utils/common-functions';
 import WorldSummary  from './worldSummary';
+import IndiaSummary  from './indiaSummary';
 
 import i18n from '../i18n';
 
 export default function ({
   states,
   stateDistrictWiseData,
-  stateTestData
+  stateTestData,
+  lastUpdated
 }) {
 
   const [currentHoveredRegion, setCurrentHoveredRegion] = useState({});
@@ -61,6 +63,7 @@ const result = () => {
     <div className="MapExplorer " style={{animationDelay: '0.1s'}}>
 
     <div className="meta" style={{animationDelay: '0.1s'}}>
+            <span className="subtitle">
                    {lastupdatedtime && (
                             <div>
 
@@ -72,6 +75,7 @@ const result = () => {
                                     : formatDateAbsolute(lastupdatedtime)
                                 }
                               >
+                                {i18n.t('Karnataka')} :
                                 {isNaN(Date.parse(formatDate(lastupdatedtime)))
                                   ? ''
                                   : formatDistance(
@@ -81,7 +85,7 @@ const result = () => {
                               </h3>
                             </div>
                           )}
-
+                    </span>
                </div>
 
 
@@ -140,6 +144,7 @@ const result = () => {
         }
 
       </div>
+       <div><IndiaSummary statesData={states} lastUpdated={lastUpdated}/></div>
        <div><WorldSummary/></div>
     </div>
   );

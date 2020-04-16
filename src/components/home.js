@@ -93,6 +93,7 @@ const title = t('covidShareTitle');
                                   states={states}
                                   stateDistrictWiseData={stateDistrictWiseData}
                                   stateTestData={stateTestData}
+                                  lastUpdated={lastUpdated}
                                 />
 
                   <CoronaTableData

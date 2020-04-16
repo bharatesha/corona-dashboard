@@ -18,7 +18,7 @@ function WorldSummary(){
       return (
         <div>
            { fetched && (
-                <SummaryTiles data={trackWorldDetails}/>
+                <SummaryTiles data={trackWorldDetails} title="World" tileClass="steelblue"/>
            )}
         </div>
       );

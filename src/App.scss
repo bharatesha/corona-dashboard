@@ -1287,6 +1287,13 @@ table {
         font-weight: 600;
       }
 
+
+       &.is-seagreen {
+            background: seagreen;
+            h1, h5,
+            h6 {color: $white;}
+       }
+
       &.is-steelblue {
             background: steelblue;
             h1, h5,
