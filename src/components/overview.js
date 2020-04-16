@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {formatDistance, format, parse} from 'date-fns';
-import { NovelCovid } from 'novelcovid';
 
 import {formatNumber} from '../utils/common-functions';
 import {formatDate, formatDateAbsolute, filterJson} from '../utils/common-functions';
-
+import WorldSummary  from './worldSummary';
 
 import i18n from '../i18n';
 
@@ -18,8 +17,6 @@ export default function ({
   const [panelRegion, setPanelRegion] = useState({});
   const [testObj, setTestObj] = useState({});
   const [fetched, setFetched] = useState(false);
-  const [trackWorldDetails, setTrackWorldDetails] = useState({});
-
 
   useEffect(() => {
     const region = getRegionFromState(filterJson(states,'state','Karnataka')[0]);
@@ -27,11 +24,7 @@ export default function ({
     //const region = getRegionFromState(filterJson(states));
     setPanelRegion(region);
     setCurrentHoveredRegion(region);
-    let novelCovid = new NovelCovid()
-    novelCovid.all().then(res => {
-               setTrackWorldDetails(res);
-               setFetched(true);
-    });
+    setFetched(true);
   }, [states]);
 
   if (!panelRegion) {
@@ -60,62 +53,6 @@ export default function ({
     );
   }, [panelRegion, stateTestData, testObj]);
 
-const WorldDetails = (data) => {
-
-    let lastupdated = formatDistance(new Date(data.updated),  new Date());
-
-    return (
-       <div className="overviewstats">
-         <h3>
-            World information: <span class="subtitle">last udpated {lastupdated} Ago </span>
-         </h3>
-
-         <div className="map-stats" style={{marginTop:'5px'}}>
-                 <div className="stats is-steelblue fadeInUp" style={{animationDelay: '0.1s'}}>
-                   <h5>{i18n.t("Confirmed")}</h5>
-                   <h1>{formatNumber(data.cases)} </h1>
-                   <div className="stats-bottom">
-                     <h5><sup> &uarr; {formatNumber(data.todayCases)}</sup></h5>
-                   </div>
-                 </div>
-
-                 <div
-                    className="stats is-steelblue fadeInUp"
-                    style={{animationDelay: '0.1s'}}
-                  >
-                    <h5>{i18n.t("Deceased")}</h5>
-                    <h1>{formatNumber(data.deaths)}</h1>
-                    <div className="stats-bottom">
-                      <h5><sup> &uarr; {formatNumber(data.todayDeaths)}</sup></h5>
-                    </div>
-                  </div>
-
-                 <div
-                   className="stats is-steelblue fadeInUp"
-                   style={{animationDelay: '0.1s'}}
-                 >
-                   <h5>{i18n.t("Active")}</h5>
-                   <h1>{formatNumber(data.active)}</h1>
-                   <div className="stats-bottom">
-                     <h6>{}</h6>
-                   </div>
-                 </div>
-
-                 <div
-                   className="stats is-steelblue fadeInUp"
-                   style={{animationDelay: '0.1s'}}
-                 >
-                   <h5>{i18n.t("Recovered")}</h5>
-                   <h1>{formatNumber(data.recovered)}</h1>
-                   <div className="stats-bottom">
-                    <h6>{}</h6>
-                   </div>
-                 </div>
-
-               </div>
-          </div>
-        );
-}
 
 
 const result = () => {
@@ -203,7 +140,7 @@ const result = () => {
         }
 
       </div>
-       <div>{WorldDetails(trackWorldDetails)}</div>
+       <div><WorldSummary/></div>
     </div>
   );
 }
