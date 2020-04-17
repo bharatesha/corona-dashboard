@@ -2,6 +2,7 @@ import React from 'react';
 import {formatDistance} from 'date-fns';
 import i18n from '../i18n';
 import {formatNumber} from '../utils/common-functions';
+import { Button } from '@material-ui/core';
 
 function SummaryTiles({
     data,
@@ -10,7 +11,16 @@ function SummaryTiles({
 }){
 
     const lastupdated = formatDistance(new Date(data.updated),  new Date());
-    const tileClassData = "stats is-"+tileClass+" fadeInUp"
+    const tileClassData = "stats is-"+tileClass+" fadeInUp";
+    let link = (title == 'India'?'/indiadetails':'/worlddetails');
+
+    const worldDetailsButton = (
+            <div className="navigationLink">
+                 <Button href={link} variant="contained" size="small" disableElevation>
+                   Click Here For {title} More Details
+                 </Button>
+            </div>
+          );
 
     return (
        <div className="overviewstats">
@@ -55,6 +65,7 @@ function SummaryTiles({
                  </div>
 
                </div>
+               {worldDetailsButton}
           </div>
         );
 

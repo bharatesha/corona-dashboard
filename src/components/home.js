@@ -7,6 +7,7 @@ import DistrictDetails from './districtdetails';
 import CoronaTableData from './coronaTableData';
 import {filterJson} from '../utils/common-functions';
 import TitleBanner from './titleBanner';
+import Footer from './footer';
 
 
 import { FacebookShareButton, FacebookIcon, WhatsappIcon, WhatsappShareButton } from  "react-share";
@@ -112,6 +113,8 @@ const title = t('covidShareTitle');
           </div>
         </React.Fragment>
         )}
+
+        <Footer/>
     </div>
   );
 }
