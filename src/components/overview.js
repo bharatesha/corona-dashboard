@@ -60,12 +60,11 @@ export default function ({
 const result = () => {
 
   return (
-    <div className="MapExplorer " style={{animationDelay: '0.1s'}}>
+    <div className="MapExplorer" style={{animationDelay: '0.1s'}}>
 
-    <div className="meta" style={{animationDelay: '0.1s'}}>
-            <span className="subtitle">
+    <div className="overviewstats" style={{animationDelay: '0.1s'}}>
+
                    {lastupdatedtime && (
-                            <div>
 
 
                               <h3
@@ -83,13 +82,9 @@ const result = () => {
                                       new Date()
                                     ) + ' Ago'}
                               </h3>
-                            </div>
                           )}
-                    </span>
-               </div>
 
-
-      <div className="map-stats">
+      <div className="map-stats"  style={{marginTop:'10px'}}>
 
         <div className="stats fadeInUp" style={{animationDelay: '0.1s'}}>
           <h5>{i18n.t("Confirmed")}</h5>
@@ -129,16 +124,16 @@ const result = () => {
             style={{animationDelay: '0.1s'}}
           >
              <h5>{i18n.t("Tested")}</h5>
-            <div className="stats-bottom">
-              <h1 style={{fontSize: '1.4em'}}>{formatNumber(testObj?.totaltested)}</h1>
-            </div>
-
+             <h1 style={{fontSize: '1.4em'}}>{formatNumber(testObj?.totaltested)}</h1>
           </div>
         }
 
       </div>
+      <div>
        <div><IndiaSummary statesData={states} lastUpdated={lastUpdated}/></div>
        <div><WorldSummary/></div>
+      </div>
+     </div>
     </div>
   );
 }

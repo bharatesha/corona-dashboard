@@ -23,7 +23,7 @@ function SummaryTiles({
           );
 
     return (
-       <div className="overviewstats">
+       <div className="overviewstats" style={{animationDelay: '0.1s'}}>
          <h3>
            <b> {i18n.t(title)} </b>: <span className="subtitle">about {lastupdated} Ago </span>
          </h3>
