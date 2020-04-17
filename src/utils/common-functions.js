@@ -127,7 +127,7 @@ export function filterJson(data, key, text){
       return data?.filter(
         e => (
           // Added initial opening brace
-          (e[key].toLowerCase().indexOf(lcText) === 0)
+          (e[key].toLowerCase() === lcText)
         )// added closing brace
       );
     }

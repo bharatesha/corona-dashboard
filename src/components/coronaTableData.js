@@ -51,12 +51,12 @@ export default function({
 
     function getCityPatients(district, city){
 
+      let districtDetails = statePatients.filter( patient => patient.detecteddistrict === district);
       let result = null;
       if(city !== 'Unknown'){
-           result = filterJson(statePatients,'detectedcity', city)
+            result = districtDetails.filter( patient => patient.detectedcity === city);
       }else{
-            result = statePatients.filter( patient => patient.detecteddistrict === district);
-            result = result.filter( patient => patient.detectedcity === "");
+            result = districtDetails.filter( patient => patient.detectedcity === "");
       }
       return result;
     }
