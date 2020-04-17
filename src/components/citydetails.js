@@ -1,5 +1,6 @@
 import React from 'react';
 import MaterialTable from "material-table";
+import i18n from '../i18n';
 
 export default function ({
     data,
@@ -12,7 +13,7 @@ export default function ({
     return (
            <MaterialTable
              columns={[
-               { title: "ಸಂಖ್ಯೆ", field: "statepatientnumber",defaultSort:"desc",
+               { title: i18n.t("No"), field: "statepatientnumber",defaultSort:"desc",
                     customSort: (a, b) => {
                            //console.log(parseInt(a.statepatientnumber.substring(0,5),10));
                            a=parseInt(a.statepatientnumber.substring(4), 10);
@@ -21,7 +22,7 @@ export default function ({
 
                     }
                },
-               { title: "ಘೋಷಿತ ದಿನಾಂಕ", field: "dateannounced", type: "date",
+               { title: i18n.t("Announced Date"), field: "dateannounced", type: "date",
 
                   customSort: (a, b) => {
                         var aparts = a.dateannounced.split('/');
@@ -35,10 +36,10 @@ export default function ({
                    }
                },
                //{ title: "ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ", field: "currentstatus" },
-               { title: "ಟಿಪ್ಪಣಿಗಳು", field: "notes" }
+               { title: i18n.t("Notes"), field: "notes" }
              ]}
              data={data}
-             title="ಇತ್ತೀಚಿನ ಮಾಹಿತಿಗಳು"
+             title=""
 
             options={{
                    pageSizeOptions : [5, 10, 50, data.length],

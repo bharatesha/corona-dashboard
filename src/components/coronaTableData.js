@@ -68,9 +68,9 @@ export default function({
                       (
                             <MaterialTable
                        	 columns={[
-                       	   { title: "ಜಿಲ್ಲೆ", field: "district"},
-                       	   { title: "ದೃಢಪಡಿಸಲಾಗಿದೆ", field: "confirmed"},
-                       	   { title: "ಹೊಸ ಪ್ರಕರಣಗಳು", field: "changed", type:"numeric", defaultSort:"desc"}
+                       	   { title: i18n.t("District"), field: "district"},
+                       	   { title: i18n.t("Confirmed"), field: "confirmed"},
+                       	   { title: i18n.t("New Cases"), field: "changed", type:"numeric", defaultSort:"desc"}
                        	 ]}
                        	 data={tableData}
 

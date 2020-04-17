@@ -1,5 +1,8 @@
 import React from 'react';
 import MaterialTable from "material-table";
+import i18n from '../i18n';
+import LinkIcon from '@material-ui/icons/Link';
+import CloseIcon from '@material-ui/icons/Close';
 
 export default function ({
     data,
@@ -9,10 +12,19 @@ export default function ({
     let pageSize = isSimple?5:5;
     isSimple=!isSimple;
 
+    const backButton = row => {
+            let source = row.source1;
+            if(source){
+                return <a href={source} target="_blank" rel="noopener noreferrer"><LinkIcon/></a>;
+            }
+            return <CloseIcon/>
+    }
+
+
     return (
            <MaterialTable
              columns={[
-               { title: "ಸಂಖ್ಯೆ", field: "statepatientnumber",defaultSort:"desc",
+               { title: i18n.t("No"), field: "statepatientnumber",defaultSort:"desc",
                     customSort: (a, b) => {
                            //console.log(parseInt(a.statepatientnumber.substring(0,5),10));
                            a=parseInt(a.statepatientnumber.substring(4), 10);
@@ -21,7 +33,7 @@ export default function ({
 
                     }
                },
-               { title: "ಘೋಷಿತ ದಿನಾಂಕ", field: "dateannounced", type: "date",
+               { title: i18n.t("Announced Date"), field: "dateannounced", type: "date",
 
                   customSort: (a, b) => {
                         var aparts = a.dateannounced.split('/');
@@ -34,13 +46,16 @@ export default function ({
 
                    }
                },
-               { title: "ಜಿಲ್ಲೆ", field: "detecteddistrict" },
-               { title: "ನಗರ", field: "detectedcity" },
-               //{ title: "ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ", field: "currentstatus" },
-               { title: "ಟಿಪ್ಪಣಿಗಳು", field: "notes" }
+               { title: i18n.t("District"), field: "detecteddistrict" },
+               { title: i18n.t("City"), field: "detectedcity" },
+               { title: i18n.t("Notes"), field: "notes" },
+               { title: i18n.t("Status"), field: "currentstatus" },
+               { title: i18n.t("Age"), field: "agebracket" },
+               { title: i18n.t("Source"), field: "source1", render: rowData => backButton(rowData) },
+
              ]}
              data={data}
-             title="ಇತ್ತೀಚಿನ ಮಾಹಿತಿಗಳು"
+             title=""
 
             options={{
                    pageSizeOptions : [5, 10, 50, data.length],

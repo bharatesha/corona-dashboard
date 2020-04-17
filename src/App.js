@@ -8,12 +8,18 @@ import {
 } from 'react-router-dom';
 import * as Icon from 'react-feather';
 
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import StepLabel    from '@material-ui/core/StepLabel';
+import FormControl from '@material-ui/core/FormControl';
+
 
 import './App.css';
 import './App.scss';
 
 // the hoc
 import { withNamespaces } from 'react-i18next';
+import i18n from './i18n';
 
 import Home from './components/home';
 import WorldDetails from './components/worldDetails';
@@ -44,9 +50,29 @@ const pages = [
     },
  ]
 
+  const [lang, setLang] = React.useState('en');
+
+  const handleChange = (event) => {
+    let val = event.target.value;
+    i18n.changeLanguage(val);
+    setLang(val);
+  };
 
   return (
     <div className="App">
+
+    <FormControl style={{flexFlow:'row'}}>
+     <StepLabel style={{marginRigh:'10px'}} >Language</StepLabel>
+    <Select
+              value={lang}
+              onChange={handleChange}
+              disableUnderline
+            >
+              <MenuItem value='en'>English</MenuItem>
+              <MenuItem value='kn'>ಕನ್ನಡ</MenuItem>
+            </Select>
+</FormControl>
+
      <Router history={history}>
             <Route
               render={({location}) => (

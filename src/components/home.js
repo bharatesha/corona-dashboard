@@ -3,7 +3,7 @@ import axios from 'axios';
 import { withNamespaces } from 'react-i18next';
 
 import Overview from './overview';
-import DistrictDetails from './districtdetails';
+import PatientDetails from './patientdetails';
 import CoronaTableData from './coronaTableData';
 import {filterJson} from '../utils/common-functions';
 import TitleBanner from './titleBanner';
@@ -70,7 +70,7 @@ const title = t('covidShareTitle');
       {fetched && (
         <React.Fragment>
           <div className="Home">
-                          <h1 style={{fontSize:'1.6em'}}>{t('covidTitle')}</h1>
+                          <h1 style={{fontSize:'1.6em',  marginTop:'0px'}}>{t('covidTitle')}</h1>
 
                           <div>
                             <WhatsappShareButton style={{marginRight:'30px'}}
@@ -106,7 +106,7 @@ const title = t('covidShareTitle');
                              statePatients={patientStateData}
                              />
                    <div style={{'marginTop': '50px','width': '100%','marginBottom': '20px' }}>
-                        <DistrictDetails
+                        <PatientDetails
                             data={patientStateData}
                         />
                    </div>
