@@ -31,7 +31,7 @@ function SummaryTiles({
          <div className="map-stats" style={{marginTop:'5px'}}>
                  <div className={tileClassData} style={{animationDelay: '0.1s'}}>
                    <h5>{i18n.t("Confirmed")}</h5>
-                   <h1 style={{fontSize: '1.5em'}}>{formatNumber(data.cases)} </h1>
+                   <h1 style={{fontSize: '1.2em'}}>{formatNumber(data.cases)} </h1>
                    <h5> <span>&uarr; {formatNumber(data.todayCases)} </span></h5>
                  </div>
 
@@ -40,7 +40,7 @@ function SummaryTiles({
                     style={{animationDelay: '0.1s'}}
                   >
                     <h5>{i18n.t("Deceased")}</h5>
-                    <h1 style={{fontSize: '1.5em'}}>{formatNumber(data.deaths)}</h1>
+                    <h1 style={{fontSize: '1.2em'}}>{formatNumber(data.deaths)}</h1>
                     <h5><sup> &uarr; {formatNumber(data.todayDeaths)}</sup></h5>
                   </div>
 
@@ -49,7 +49,7 @@ function SummaryTiles({
                    style={{animationDelay: '0.1s'}}
                  >
                    <h5>{i18n.t("Active")}</h5>
-                   <h1 style={{fontSize: '1.5em'}}>{formatNumber(data.active)}</h1>
+                   <h1 style={{fontSize: '1.2em'}}>{formatNumber(data.active)}</h1>
                    <div className="stats-bottom">
                      <h6>{}</h6>
                    </div>
@@ -60,7 +60,7 @@ function SummaryTiles({
                    style={{animationDelay: '0.1s'}}
                  >
                    <h5>{i18n.t("Recovered")}</h5>
-                   <h1 style={{fontSize: '1.5em'}}>{formatNumber(data.recovered)}</h1>
+                   <h1 style={{fontSize: '1.2em'}}>{formatNumber(data.recovered)}</h1>
                    {data.todayRecovered && (<h5><sup> &uarr; {formatNumber(data.todayRecovered)}</sup></h5>)}
                  </div>
 

@@ -17,6 +17,7 @@ import { withNamespaces } from 'react-i18next';
 
 import Home from './components/home';
 import WorldDetails from './components/worldDetails';
+import IndiaDetails from './components/indiaDetails';
 
 const history = require('history').createBrowserHistory;
 
@@ -34,7 +35,13 @@ const pages = [
       view: WorldDetails,
       displayName: 'WorldDetails',
       animationDelayForNavbar: 0.3,
-    }
+    },
+     {
+      pageLink: '/indiadetails',
+      view: IndiaDetails,
+      displayName: 'IndiaDetails',
+      animationDelayForNavbar: 0.3,
+    },
  ]
 
 
