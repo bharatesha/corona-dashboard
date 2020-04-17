@@ -93,7 +93,7 @@ const result = () => {
 
         <div className="stats fadeInUp" style={{animationDelay: '0.1s'}}>
           <h5>{i18n.t("Confirmed")}</h5>
-          <h1>{formatNumber(panelRegion.confirmed)} </h1>
+          <h1 style={{fontSize: '1.6em'}}>{formatNumber(panelRegion.confirmed)} </h1>
           <h5> &uarr; {formatNumber(panelRegion.deltaconfirmed)}</h5>
         </div>
 
@@ -102,7 +102,7 @@ const result = () => {
           style={{animationDelay: '0.1s'}}
         >
           <h5>{i18n.t("Active")}</h5>
-          <h1>{formatNumber(panelRegion.active)}</h1>
+          <h1 style={{fontSize: '1.6em'}}>{formatNumber(panelRegion.active)}</h1>
         </div>
 
         <div
@@ -110,7 +110,7 @@ const result = () => {
           style={{animationDelay: '0.1s'}}
         >
           <h5>{i18n.t("Recovered")}</h5>
-          <h1>{formatNumber(panelRegion.recovered)}</h1>
+          <h1 style={{fontSize: '1.6em'}}>{formatNumber(panelRegion.recovered)}</h1>
           <h5> &uarr; {formatNumber(panelRegion.deltarecovered)}</h5>
         </div>
 
@@ -119,7 +119,7 @@ const result = () => {
           style={{animationDelay: '0.1s'}}
         >
           <h5>{i18n.t("Deceased")}</h5>
-          <h1>{formatNumber(panelRegion.deaths)}</h1>
+          <h1 style={{fontSize: '1.6em'}}>{formatNumber(panelRegion.deaths)}</h1>
           <h5> &uarr; {formatNumber(panelRegion.deltadeaths)}</h5>
         </div>
 
@@ -130,7 +130,7 @@ const result = () => {
           >
              <h5>{i18n.t("Tested")}</h5>
             <div className="stats-bottom">
-              <h1>{formatNumber(testObj?.totaltested)}</h1>
+              <h1 style={{fontSize: '1.6em'}}>{formatNumber(testObj?.totaltested)}</h1>
             </div>
 
           </div>
