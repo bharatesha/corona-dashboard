@@ -3,6 +3,7 @@ import MaterialTable from "material-table";
 import { Button } from '@material-ui/core';
 import { TablePagination } from '@material-ui/core';
 import axios from 'axios';
+import {formatDate} from '../utils/common-functions';
 
 function IndiaDetails(){
 
@@ -64,6 +65,17 @@ function IndiaDetails(){
                        { title: "Today Deaths", field: "deltadeaths", type:"numeric" },
                        { title: "Recovered", field: "recovered", type:"numeric"},
                        { title: "Today Recovered", field: "deltarecovered", type:"numeric"},
+                       { title: "Last Updated", field: "lastupdatedtime", type:"date",
+
+                        customSort: (a, b) => {
+
+                                let ad = Date.parse(formatDate(a.lastupdatedtime));
+                                let bd = Date.parse(formatDate(b.lastupdatedtime));
+                                return ad-bd;
+
+                           }
+
+                        },
 
                      ]}
                      data={states}
@@ -73,7 +85,7 @@ function IndiaDetails(){
                            pageSizeOptions : [10, 20, 30, 50, states.length],
                            overflowX: 'auto',
                            pageSize:30,
-                           headerStyle: {  position: 'sticky', top: 0, fontSize:'1.2em'},
+                           headerStyle: {  position: 'sticky', top: 0, fontSize:'1.2em',},
                            cellStyle: {fontSize:'1.2em'},
                            maxBodyHeight: '800px',
 
