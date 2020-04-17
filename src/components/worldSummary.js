@@ -8,7 +8,7 @@ function WorldSummary(){
     const [fetched, setFetched] = useState(false);
 
     useEffect(() => {
-        let novelCovid = new NovelCovid()
+        let novelCovid = new NovelCovid();
         novelCovid.all().then(res => {
                    setTrackWorldDetails(res);
                    setFetched(true);

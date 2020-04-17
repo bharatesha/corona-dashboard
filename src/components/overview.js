@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {formatDistance, format, parse} from 'date-fns';
+import {formatDistance} from 'date-fns';
 
 import {formatNumber} from '../utils/common-functions';
 import {formatDate, formatDateAbsolute, filterJson} from '../utils/common-functions';
