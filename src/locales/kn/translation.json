@@ -52,12 +52,13 @@
 
   "footinfo": "ಇದು ಮುಕ್ತ ಮೂಲದ ಮಾಹಿತಿ, ಅಧಿಕೃತ ಮಾಹಿತಿಗಾಗಿ ದಯವಿಟ್ಟು ಸಂಪರ್ಕಿಸಿ",
 
-  "covidShareTitle":"ಕರೋನಾದ ಮಾಹಿತಿಗಾಗಿ ಭೇಟಿ ನೀಡಿ",
+  "covidShareTitle":"ಇತ್ತೀಚಿನ ಎಲ್ಲಾ ಕರೋನಾದ ಮಾಹಿತಿಗಾಗಿ ಭೇಟಿ ನೀಡಿ",
   "contact": "ನಿಮ್ಮ ಸಲಹೆಗಳನ್ನು contactnoldz@gmail.com ಗೆ ಕಳುಹಿಸಿ",
 
   "Karnataka": "ಕರ್ನಾಟಕ",
   "India": "ಭಾರತ",
   "World": "ಪ್ರಪಂಚ",
   "City": "ನಗರ",
-  "Status":"ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ"
+  "Status":"ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ",
+  "shareUrl":"http://www.noldz.com/kn"
 }

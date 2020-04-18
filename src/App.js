@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from 'react-router-dom';
 
 import Select from '@material-ui/core/Select';
@@ -77,7 +76,6 @@ const pages = [
 
   const onRouteEnter = (event) => {
       let path = event.pathname;
-      console.log(path);
       if(path === '/kn'){
          i18n.changeLanguage('kn');
       }

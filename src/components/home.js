@@ -62,8 +62,10 @@ function Home({props,t}) {
   };
 
 
-const shareUrl = 'http://www.noldz.com';
-const title = t('covidShareTitle');
+    const shareUrl= t('shareUrl');
+    const shareTitle = t('covidShareTitle');
+
+
 
   return (
     <div>
@@ -75,7 +77,7 @@ const title = t('covidShareTitle');
                           <div>
                             <WhatsappShareButton style={{marginRight:'30px'}}
                                url={shareUrl}
-                               title={title}
+                               title={shareTitle}
                                separator=":: "
                                className="Demo__some-network__share-button"
                              >
@@ -84,7 +86,7 @@ const title = t('covidShareTitle');
 
                              <FacebookShareButton
                                   url={shareUrl}
-                                  title={title}
+                                  title={shareTitle}
                                   separator=":: "
                                   className="Demo__some-network__share-button"
                                 >
