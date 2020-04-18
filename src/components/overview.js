@@ -89,7 +89,7 @@ const result = () => {
         <div className="stats fadeInUp" style={{animationDelay: '0.1s'}}>
           <h5>{i18n.t("Confirmed")}</h5>
           <h1 style={{fontSize: '1.4em'}}>{formatNumber(panelRegion.confirmed)} </h1>
-          <h5> &uarr; {formatNumber(panelRegion.deltaconfirmed)}</h5>
+          <h5> &uarr; <span style={{fontSize: '1rem'}}>{formatNumber(panelRegion.deltaconfirmed)} </span></h5>
         </div>
 
         <div
@@ -106,7 +106,7 @@ const result = () => {
         >
           <h5>{i18n.t("Recovered")}</h5>
           <h1 style={{fontSize: '1.4em'}}>{formatNumber(panelRegion.recovered)}</h1>
-          <h5> &uarr; {formatNumber(panelRegion.deltarecovered)}</h5>
+          <h5> &uarr; <span style={{fontSize: '1rem'}}>{formatNumber(panelRegion.deltarecovered)}</span></h5>
         </div>
 
         <div
@@ -115,7 +115,7 @@ const result = () => {
         >
           <h5>{i18n.t("Deceased")}</h5>
           <h1 style={{fontSize: '1.4em'}}>{formatNumber(panelRegion.deaths)}</h1>
-          <h5> &uarr; {formatNumber(panelRegion.deltadeaths)}</h5>
+          <h5> &uarr; <span style={{fontSize: '1rem'}}>{formatNumber(panelRegion.deltadeaths)}</span></h5>
         </div>
 
         {
