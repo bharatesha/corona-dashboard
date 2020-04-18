@@ -8,6 +8,7 @@ import CoronaTableData from './coronaTableData';
 import {filterJson} from '../utils/common-functions';
 import TitleBanner from './titleBanner';
 import Footer from './footer';
+import SportsEsportsRoundedIcon from '@material-ui/icons/SportsEsportsRounded';
 
 
 import { FacebookShareButton, FacebookIcon, WhatsappIcon, WhatsappShareButton } from  "react-share";
@@ -66,7 +67,6 @@ function Home({props,t}) {
     const shareTitle = t('covidShareTitle');
 
 
-
   return (
     <div>
       {fetched && (
@@ -92,6 +92,12 @@ function Home({props,t}) {
                                 >
                                  <FacebookIcon size={50} round />
                             </FacebookShareButton>
+
+                            <a href="/playgame" target="_blank" rel="noopener noreferrer">
+                            <SportsEsportsRoundedIcon color="action" style={{ fontSize: 60, marginLeft: '25px' }} >
+                              Play Game
+                            </SportsEsportsRoundedIcon>
+                            </a>
                         </div>
 
                         <TitleBanner activityLog={activityLog} />

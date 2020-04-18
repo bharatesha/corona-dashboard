@@ -22,6 +22,7 @@ import i18n from './i18n';
 import Home from './components/home';
 import WorldDetails from './components/worldDetails';
 import IndiaDetails from './components/indiaDetails';
+import PlayGame from './components/playgame';
 
 const history = require('history').createBrowserHistory;
 
@@ -57,6 +58,12 @@ const pages = [
       view: IndiaDetails,
       displayName: 'IndiaDetails',
       animationDelayForNavbar: 0.3,
+    },
+    {
+          pageLink: '/playgame',
+          view: PlayGame,
+          displayName: 'PlayGame',
+          animationDelayForNavbar: 0.3,
     },
      {
           pageLink: '/*',

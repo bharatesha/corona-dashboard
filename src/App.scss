@@ -3525,4 +3525,18 @@ td {
   margin-bottom: 10px;
 }
 
-
+.pageCenter {
+    left: 0;
+    line-height: 30px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    width: 100%;
+    margin: 30px;
+    display: contents;
+    padding: 50px;
+    h1 {
+       text-transform: none;
+    }
+}
