@@ -36,6 +36,18 @@ const pages = [
       animationDelayForNavbar: 0.2,
     },
     {
+          pageLink: '/kn',
+          view: Home,
+          displayName: 'Home',
+          animationDelayForNavbar: 0.2,
+    },
+    {
+          pageLink: '/en',
+          view: Home,
+          displayName: 'Home',
+          animationDelayForNavbar: 0.2,
+    },
+    {
       pageLink: '/worlddetails',
       view: WorldDetails,
       displayName: 'WorldDetails',
@@ -47,6 +59,12 @@ const pages = [
       displayName: 'IndiaDetails',
       animationDelayForNavbar: 0.3,
     },
+     {
+          pageLink: '/*',
+          view: Home,
+          displayName: 'Home',
+          animationDelayForNavbar: 0.1,
+     },
  ]
 
   const [lang, setLang] = React.useState('en');
@@ -56,6 +74,17 @@ const pages = [
     i18n.changeLanguage(val);
     setLang(val);
   };
+
+  const onRouteEnter = (event) => {
+      let path = event.pathname;
+      console.log(path);
+      if(path === '/kn'){
+         i18n.changeLanguage('kn');
+      }
+
+    };
+
+
 
   return (
     <div className="App">
@@ -77,7 +106,6 @@ const pages = [
               render={({location}) => (
                 <div className="Almighty-Router">
 
-                  <Route exact path="/" render={() => <Redirect to="/" />} />
                   <Switch location={location}>
                     {pages.map((page, i) => {
                       return (
@@ -85,11 +113,11 @@ const pages = [
                           exact
                           path={page.pageLink}
                           component={page.view}
+                          onEnter ={onRouteEnter(location)}
                           key={i}
                         />
                       );
                     })}
-                    <Redirect to="/" />
                   </Switch>
                 </div>
               )}
