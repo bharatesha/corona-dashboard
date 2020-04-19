@@ -9,9 +9,12 @@ import {filterJson} from '../utils/common-functions';
 import TitleBanner from './titleBanner';
 import Footer from './footer';
 import SportsEsportsRoundedIcon from '@material-ui/icons/SportsEsportsRounded';
-
+import {FormControl, Select, MenuItem, StepLabel } from '@material-ui/core';
 
 import { FacebookShareButton, FacebookIcon, WhatsappIcon, WhatsappShareButton } from  "react-share";
+import i18n from '../i18n';
+
+const history = require('history').createBrowserHistory;
 
 function Home({props,t}) {
 
@@ -24,6 +27,7 @@ function Home({props,t}) {
     const [patients, setPatients] = useState([]);
 
     const [patientStateData, setPatientStateData] = useState([]);
+    const [lang, setLang] = React.useState('en');
 
   const [fetched, setFetched] = useState(false);
 
@@ -56,12 +60,28 @@ function Home({props,t}) {
       setActivityLog(updateLogResponse.data);
       setPatients(patients.data);
       setPatientStateData(filterJson(patients.data.raw_data,'detectedstate', 'Karnataka'));
+      changeLanguage();
       setFetched(true);
     } catch (err) {
       console.log(err);
     }
   };
 
+    const changeLanguage = () => {
+
+        let path = history(props).location.pathname;
+        if(path === '/kn'){
+            i18n.changeLanguage('kn');
+            setLang('kn');
+        }
+
+    }
+
+    const handleChange = (event) => {
+        let val = event.target.value;
+        i18n.changeLanguage(val);
+        setLang(val);
+      };
 
     const shareUrl= t('shareUrl');
     const shareTitle = t('covidShareTitle');
@@ -71,6 +91,19 @@ function Home({props,t}) {
     <div>
       {fetched && (
         <React.Fragment>
+
+         <FormControl style={{flexFlow:'row'}}>
+             <StepLabel style={{marginRigh:'10px'}} >Language</StepLabel>
+            <Select
+                      value={lang}
+                      onChange={handleChange}
+                      disableUnderline
+                    >
+                      <MenuItem value='en'>English</MenuItem>
+                      <MenuItem value='kn'>ಕನ್ನಡ</MenuItem>
+                    </Select>
+        </FormControl>
+
           <div className="Home">
                           <h1 style={{fontSize:'1.6em',  marginTop:'0px'}}>{t('covidTitle')}</h1>
 
