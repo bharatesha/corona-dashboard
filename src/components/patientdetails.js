@@ -46,11 +46,12 @@ export default function ({
 
                    }
                },
-               { title: i18n.t("District"), field: "detecteddistrict" },
+               { title: i18n.t("District"), field: "detecteddistrict",  render: rowData => i18n.t(rowData.detecteddistrict) },
                { title: i18n.t("City"), field: "detectedcity" },
                { title: i18n.t("Notes"), field: "notes" },
-               { title: i18n.t("Status"), field: "currentstatus" },
+               { title: i18n.t("Status"), field: "currentstatus",  render: rowData => i18n.t(rowData.currentstatus)  },
                { title: i18n.t("Age"), field: "agebracket" },
+               { title: i18n.t("Gender"), field: "gender",  render: rowData => i18n.t(rowData.gender)  },
                { title: i18n.t("Source"), field: "source1", render: rowData => backButton(rowData) },
 
              ]}
