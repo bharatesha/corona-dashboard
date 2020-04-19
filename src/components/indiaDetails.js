@@ -54,9 +54,9 @@ function IndiaDetails(){
                        cellStyle: {
                           color: '#FFF',
                           backgroundColor: 'steelblue',
-                          fontSize:'0.8em'
+                          fontSize:'1em',
+                          padding:'10px'
                         },
-
                        },
                        { title: "Cases", field: "confirmed", type:"numeric" },
                        { title: "Today Cases", field: "deltaconfirmed", type:"numeric", defaultSort:"desc"},

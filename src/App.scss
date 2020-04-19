@@ -3540,3 +3540,10 @@ td {
        text-transform: none;
     }
 }
+
+
+@media(max-width: 769px){
+   table td {
+       max-width:100%;
+  }
+}
