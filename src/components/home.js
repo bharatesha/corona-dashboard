@@ -10,6 +10,8 @@ import TitleBanner from "./titleBanner";
 import Footer from "./footer";
 import SportsEsportsRoundedIcon from "@material-ui/icons/SportsEsportsRounded";
 import { FormControl, Select, MenuItem, StepLabel, InputLabel } from "@material-ui/core";
+import queryString from 'query-string';
+
 
 import {
   FacebookShareButton,
@@ -68,16 +70,20 @@ function Home({ props, t }) {
       setPatientStateData(
         filterJson(patients.data.raw_data, "detectedstate", state)
       );
-      changeLanguageOnLoad();
+      initOnLoad();
       setFetched(true);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const changeLanguageOnLoad = () => {
+  const initOnLoad = () => {
     let path = history(props).location.pathname;
-    if (path === "/kn" || path === "/kn/corona") {
+    let stateval = queryString.parse(history(props).location.search).state;
+    console.log(stateval);
+    if(stateval)setStateData(stateval);
+
+    if (path.startsWith("/kn")) {
       i18n.changeLanguage("kn");
       setLang("kn");
     }
@@ -88,10 +94,10 @@ function Home({ props, t }) {
     let path = history(props).location.pathname;
     i18n.changeLanguage(val);
     setLang(val);
-    if (val === "kn" && (path !== "/kn" || path !== "/kn/corona")) {
-      history(props).push("/kn/corona");
+    if (val === "kn" && !path.startsWith("/kn")) {
+      history(props).push("/kn/corona?state="+state);
     } else {
-      history(props).push("/corona");
+      history(props).push("/corona?state="+state);
     }
   };
 
@@ -110,11 +116,19 @@ function Home({ props, t }) {
 
   }
 
+  const setStateData = (stateVal) => {
+       setPatientStateData(filterJson(patientsData, "detectedstate", stateVal));
+       setState(stateVal);
+  }
+
   const handleStateChange = (event) => {
-     setPatientStateData(
-         filterJson(patientsData, "detectedstate", event.target.value)
-     );
-     setState(event.target.value);
+     let stateVal = event.target.value;
+     setStateData(stateVal);
+     let stateUrl = "/corona?state="+stateVal;
+     if(lang === 'kn'){
+        stateUrl = '/kn'+stateUrl;
+     }
+     history(props).push(stateUrl);
   }
 
   return (
@@ -166,7 +180,7 @@ function Home({ props, t }) {
 
 
             <FormControl variant="outlined" size="small">
-                <InputLabel id="demo-simple-select-outlined-label">State</InputLabel>
+                <InputLabel id="demo-simple-select-outlined-label">{t('State')}</InputLabel>
                 <Select
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
