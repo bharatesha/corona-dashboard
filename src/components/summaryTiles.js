@@ -61,7 +61,7 @@ function SummaryTiles({
                  >
                    <h5>{i18n.t("Recovered")}</h5>
                    <h1 style={{fontSize: '1.2em'}}>{formatNumber(data.recovered)}</h1>
-                   {data.todayRecovered && (<h5><sup> &uarr; {formatNumber(data.todayRecovered)}</sup></h5>)}
+                   <h5> {data.todayRecovered && (<sup> &uarr; {formatNumber(data.todayRecovered)}</sup>)}</h5>
                  </div>
 
                </div>
