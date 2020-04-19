@@ -6,8 +6,8 @@ import i18n from "../i18n";
 import { filterJson } from "../utils/common-functions";
 import CityDetails from "./citydetails";
 
-export default function ({ stateDistrictWiseData, statePatients }) {
-  let districts = stateDistrictWiseData["Karnataka"]["districtData"];
+export default function ({ stateDistrictWiseData, statePatients, state }) {
+  let districts = stateDistrictWiseData[state]["districtData"];
   let tableData = [];
   const todayDate = new Date().toLocaleDateString("en-GB");
 
@@ -35,6 +35,7 @@ export default function ({ stateDistrictWiseData, statePatients }) {
 
   function getDistrictDetails(district) {
     let districtData = filterJson(statePatients, "detecteddistrict", district);
+
     let resultMap = new Map();
     let result = [];
     let todayCount = 0;
@@ -60,6 +61,7 @@ export default function ({ stateDistrictWiseData, statePatients }) {
       (patient) => patient.detecteddistrict === district
     );
     let result = null;
+
 
     if (city === "Today") {
       result = districtDetails.filter(

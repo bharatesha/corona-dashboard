@@ -9,7 +9,7 @@ import { filterJson } from "../utils/common-functions";
 import TitleBanner from "./titleBanner";
 import Footer from "./footer";
 import SportsEsportsRoundedIcon from "@material-ui/icons/SportsEsportsRounded";
-import { FormControl, Select, MenuItem, StepLabel } from "@material-ui/core";
+import { FormControl, Select, MenuItem, StepLabel, InputLabel } from "@material-ui/core";
 
 import {
   FacebookShareButton,
@@ -22,13 +22,16 @@ import i18n from "../i18n";
 const history = require("history").createBrowserHistory;
 
 function Home({ props, t }) {
+
+  const [state, setState] = useState("Karnataka");
+
   const [states, setStates] = useState([]);
   ///const [timeseries, setTimeseries] = useState([]);
   const [lastUpdated, setLastUpdated] = useState("");
   const [stateTestData, setStateTestData] = useState({});
   const [stateDistrictWiseData, setStateDistrictWiseData] = useState({});
   const [activityLog, setActivityLog] = useState([]);
-
+  const [patientsData, setPatientsData] = useState([]);
   const [patientStateData, setPatientStateData] = useState([]);
   const [lang, setLang] = React.useState("en");
 
@@ -61,8 +64,9 @@ function Home({ props, t }) {
       setStateTestData(stateTestResponse.data.states_tested_data.reverse());
       setStateDistrictWiseData(stateDistrictWiseResponse.data);
       setActivityLog(updateLogResponse.data);
+      setPatientsData(patients.data.raw_data);
       setPatientStateData(
-        filterJson(patients.data.raw_data, "detectedstate", "Karnataka")
+        filterJson(patients.data.raw_data, "detectedstate", state)
       );
       changeLanguageOnLoad();
       setFetched(true);
@@ -79,7 +83,7 @@ function Home({ props, t }) {
     }
   };
 
-  const handleChange = (event) => {
+  const handleLanguageChange = (event) => {
     let val = event.target.value;
     let path = history(props).location.pathname;
     i18n.changeLanguage(val);
@@ -94,13 +98,32 @@ function Home({ props, t }) {
   const shareUrl = t("shareUrl");
   const shareTitle = t("covidShareTitle");
 
+  const renderStateSelect = () => {
+
+       let stateList = states.map(item => item.state);
+       stateList.sort();
+       return stateList.map((state, v)=>{
+            return (
+               <MenuItem value={state} key={state}>{state}</MenuItem>
+            )
+       });
+
+  }
+
+  const handleStateChange = (event) => {
+     setPatientStateData(
+         filterJson(patientsData, "detectedstate", event.target.value)
+     );
+     setState(event.target.value);
+  }
+
   return (
     <div>
       {fetched && (
         <React.Fragment>
           <FormControl style={{ flexFlow: "row" }}>
             <StepLabel style={{ marginRigh: "10px" }}>Language</StepLabel>
-            <Select value={lang} onChange={handleChange} disableUnderline>
+            <Select value={lang} onChange={handleLanguageChange} disableUnderline>
               <MenuItem value="en">English</MenuItem>
               <MenuItem value="kn">ಕನ್ನಡ</MenuItem>
             </Select>
@@ -141,9 +164,25 @@ function Home({ props, t }) {
               </a>
             </div>
 
+
+            <FormControl variant="outlined" size="small">
+                <InputLabel id="demo-simple-select-outlined-label">State</InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={state}
+                  label="State"
+                  onChange={handleStateChange}
+                >
+                  {renderStateSelect()}
+                </Select>
+              </FormControl>
+
+
             <TitleBanner activityLog={activityLog} />
 
             <Overview
+              state={state}
               states={states}
               stateDistrictWiseData={stateDistrictWiseData}
               stateTestData={stateTestData}
@@ -151,6 +190,7 @@ function Home({ props, t }) {
             />
 
             <CoronaTableData
+              state={state}
               stateDistrictWiseData={stateDistrictWiseData}
               statePatients={patientStateData}
             />

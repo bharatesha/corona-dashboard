@@ -27,7 +27,6 @@ export default function ({ data, isSimple }) {
           title: i18n.t("No"),
           field: "statepatientnumber",
           customSort: (a, b) => {
-            //console.log(parseInt(a.statepatientnumber.substring(0,5),10));
             a = parseInt(a.statepatientnumber.substring(4), 10);
             b = parseInt(b.statepatientnumber.substring(4), 10);
             return a - b;

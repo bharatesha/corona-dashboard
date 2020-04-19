@@ -16,13 +16,6 @@ function WorldDetails() {
     });
   }, []);
 
-  /*const getCountryUrlImage = country => {
-          console.log(trackWorldCountryDetails.filter( c => c.country === country));
-          let url = trackWorldCountryDetails.filter( c => c.country === country);
-
-          return "url("+url+")";
-      }*/
-
   const backButton = (
     <div className="linkbutton">
       <Button variant="contained" href="/" disableElevation>

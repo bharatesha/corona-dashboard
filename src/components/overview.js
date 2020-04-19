@@ -13,6 +13,7 @@ import IndiaSummary from "./indiaSummary";
 import i18n from "../i18n";
 
 export default function ({
+  state,
   states,
   stateDistrictWiseData,
   stateTestData,
@@ -25,14 +26,13 @@ export default function ({
 
   useEffect(() => {
     const region = getRegionFromState(
-      filterJson(states, "state", "Karnataka")[0]
+      filterJson(states, "state", state)[0]
     );
-    //console.log(filterJson(states,'state','Karnataka'));
-    //const region = getRegionFromState(filterJson(states));
     setPanelRegion(region);
     setCurrentHoveredRegion(region);
     setFetched(true);
-  }, [states]);
+  }, [states, state]);
+
 
   if (!panelRegion) {
     return null;
@@ -71,7 +71,7 @@ export default function ({
                   : formatDateAbsolute(lastupdatedtime)
               }
             >
-              <b>{i18n.t("Karnataka")} </b>:
+              <b>{i18n.t(state)} </b>:
               {isNaN(Date.parse(formatDate(lastupdatedtime)))
                 ? ""
                 : formatDistance(

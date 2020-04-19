@@ -1,6 +1,7 @@
 import React from "react";
 import MaterialTable from "material-table";
 import i18n from "../i18n";
+import { TablePagination } from "@material-ui/core";
 
 export default function ({ data, isSimple }) {
   let pageSize = isSimple ? 5 : 5;
@@ -14,7 +15,6 @@ export default function ({ data, isSimple }) {
           field: "statepatientnumber",
           defaultSort: "desc",
           customSort: (a, b) => {
-            //console.log(parseInt(a.statepatientnumber.substring(0,5),10));
             a = parseInt(a.statepatientnumber.substring(4), 10);
             b = parseInt(b.statepatientnumber.substring(4), 10);
             return a - b;
@@ -47,9 +47,16 @@ export default function ({ data, isSimple }) {
         showTitle: Boolean(isSimple),
         toolbar: Boolean(isSimple),
         search: Boolean(isSimple),
-        paging: Boolean(isSimple),
         header: Boolean(isSimple),
       }}
+
+      components={{
+                  Pagination: (props) => (
+                    <TablePagination {...props} style={{ width: "100%",  maxWidth:"100%" }} />
+                  ),
+                }}
+
+
     />
   );
 }

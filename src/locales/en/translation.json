@@ -1,10 +1,11 @@
 {
   "covidTitle": "COVID-19",
   "footinfo": "This is open source information, visit for official information on",
-  "contact": "Send your suggestions to contactnoldz@gmail.com",
+  "contact": "Send your suggestions to ",
   "covidShareTitle": "Visit for latest updates on corona virus/covid19 ",
   "shareUrl":"http://www.noldz.com/corona",
   "playgamemsg": "Game is under development. Game will take around 5 minutes to  load, please be patient. Close browser tab to end the game.",
   "/indiadetails": "Click Here For India Details",
-  "/worlddetails": "Click Here For World Details"
+  "/worlddetails": "Click Here For World Details",
+  "statecontacturl":"www.mohfw.gov.in"
 }
