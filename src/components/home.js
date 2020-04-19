@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Redirect} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { withNamespaces } from 'react-i18next';
 
@@ -24,7 +24,6 @@ function Home({props,t}) {
     const [stateTestData, setStateTestData] = useState({});
     const [stateDistrictWiseData, setStateDistrictWiseData] = useState({});
     const [activityLog, setActivityLog] = useState([]);
-    const [patients, setPatients] = useState([]);
 
     const [patientStateData, setPatientStateData] = useState([]);
     const [lang, setLang] = React.useState('en');
@@ -58,7 +57,6 @@ function Home({props,t}) {
       setStateTestData(stateTestResponse.data.states_tested_data.reverse());
       setStateDistrictWiseData(stateDistrictWiseResponse.data);
       setActivityLog(updateLogResponse.data);
-      setPatients(patients.data);
       setPatientStateData(filterJson(patients.data.raw_data,'detectedstate', 'Karnataka'));
       changeLanguage();
       setFetched(true);

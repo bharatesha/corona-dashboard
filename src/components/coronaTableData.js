@@ -13,6 +13,7 @@ export default function({
 
    let districts = stateDistrictWiseData["Karnataka"]["districtData"];
    let tableData = [];
+   const todayDate = (new Date()).toLocaleDateString('en-GB');
 
     Object.keys(districts).forEach((key) => {
          let item = createData(i18n.t(key),districts[key].confirmed, districts[key]["delta"].confirmed, key);
@@ -34,18 +35,21 @@ export default function({
         let districtData = filterJson(statePatients,'detecteddistrict', district);
         let resultMap = new Map();
         let result = [];
-
+        let todayCount = 0;
         districtData.forEach((item)=>{
            let city = item.detectedcity?item.detectedcity.trim():'Unknown';
            let count = resultMap.get(city);
            count = parseInt(count?count:0)+1;
            resultMap.set(city, count);
+
+           if(item.dateannounced === todayDate) todayCount++;
         });
 
         resultMap.forEach((k, v)=>{
             result.push(createChildData(district, v, k));
         });
 
+        result.push(createChildData(district, 'Today', todayCount));
         return result;
     }
 
@@ -53,7 +57,10 @@ export default function({
 
       let districtDetails = statePatients.filter( patient => patient.detecteddistrict === district);
       let result = null;
-      if(city !== 'Unknown'){
+
+      if(city === 'Today'){
+            result = districtDetails.filter( patient => patient.dateannounced === todayDate);
+      } else if(city !== 'Unknown'){
             result = districtDetails.filter( patient => patient.detectedcity === city);
       }else{
             result = districtDetails.filter( patient => patient.detectedcity === "");
@@ -80,7 +87,11 @@ export default function({
                                         <MaterialTable
                                                   columns={[
                                                     { title: 'ನಗರ', field: 'city' },
-                                                    { title: 'ಸಂಖ್ಯೆ', field: 'count',type:"numeric", defaultSort:"desc" }
+                                                    { title: 'ಸಂಖ್ಯೆ', field: 'count',defaultSort:"desc",  customSort: (a, b) => {
+                                                                if(b.city === 'Today')return -999999999;
+                                                                return a.count-b.count;
+                                                           }
+                                                    }
 
                                                   ]}
                                                   data={getDistrictDetails(rowData.origdistrict)}

@@ -24,7 +24,7 @@ export default function ({
     return (
            <MaterialTable
              columns={[
-               { title: i18n.t("No"), field: "statepatientnumber",defaultSort:"desc",
+               { title: i18n.t("No"), field: "statepatientnumber",
                     customSort: (a, b) => {
                            //console.log(parseInt(a.statepatientnumber.substring(0,5),10));
                            a=parseInt(a.statepatientnumber.substring(4), 10);
@@ -33,7 +33,7 @@ export default function ({
 
                     }
                },
-               { title: i18n.t("Announced Date"), field: "dateannounced", type: "date",
+               { title: i18n.t("Announced Date"), field: "dateannounced", type: "date",defaultSort:"desc",
 
                   customSort: (a, b) => {
                         var aparts = a.dateannounced.split('/');
@@ -42,7 +42,14 @@ export default function ({
                         var bparts = b.dateannounced.split('/');
                         var bdate = new Date(bparts[2], bparts[1] - 1, bparts[0]);
 
-                        return adate - bdate;
+                        let result = adate - bdate;
+
+                        if(result === 0){
+                               a=parseInt(a.statepatientnumber.substring(4), 10);
+                               b=parseInt(b.statepatientnumber.substring(4), 10);
+                               result = a -b;
+                        }
+                        return result;
 
                    }
                },
