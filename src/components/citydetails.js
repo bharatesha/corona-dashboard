@@ -1,58 +1,55 @@
-import React from 'react';
+import React from "react";
 import MaterialTable from "material-table";
-import i18n from '../i18n';
+import i18n from "../i18n";
 
-export default function ({
-    data,
-    isSimple
-}){
+export default function ({ data, isSimple }) {
+  let pageSize = isSimple ? 5 : 5;
+  isSimple = !isSimple;
 
-    let pageSize = isSimple?5:5;
-    isSimple=!isSimple;
+  return (
+    <MaterialTable
+      columns={[
+        {
+          title: i18n.t("No"),
+          field: "statepatientnumber",
+          defaultSort: "desc",
+          customSort: (a, b) => {
+            //console.log(parseInt(a.statepatientnumber.substring(0,5),10));
+            a = parseInt(a.statepatientnumber.substring(4), 10);
+            b = parseInt(b.statepatientnumber.substring(4), 10);
+            return a - b;
+          },
+        },
+        {
+          title: i18n.t("Announced Date"),
+          field: "dateannounced",
+          type: "date",
 
-    return (
-           <MaterialTable
-             columns={[
-               { title: i18n.t("No"), field: "statepatientnumber",defaultSort:"desc",
-                    customSort: (a, b) => {
-                           //console.log(parseInt(a.statepatientnumber.substring(0,5),10));
-                           a=parseInt(a.statepatientnumber.substring(4), 10);
-                           b=parseInt(b.statepatientnumber.substring(4), 10);
-                           return a - b;
+          customSort: (a, b) => {
+            var aparts = a.dateannounced.split("/");
+            var adate = new Date(aparts[2], aparts[1] - 1, aparts[0]);
 
-                    }
-               },
-               { title: i18n.t("Announced Date"), field: "dateannounced", type: "date",
+            var bparts = b.dateannounced.split("/");
+            var bdate = new Date(bparts[2], bparts[1] - 1, bparts[0]);
 
-                  customSort: (a, b) => {
-                        var aparts = a.dateannounced.split('/');
-                        var adate = new Date(aparts[2], aparts[1] - 1, aparts[0]);
-
-                        var bparts = b.dateannounced.split('/');
-                        var bdate = new Date(bparts[2], bparts[1] - 1, bparts[0]);
-
-                        return adate - bdate;
-
-                   }
-               },
-               //{ title: "ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ", field: "currentstatus" },
-               { title: i18n.t("Notes"), field: "notes" }
-             ]}
-             data={data}
-             title=""
-
-            options={{
-                   pageSizeOptions : [5, 10, 50, data.length],
-                   overflowX: 'auto',
-                   pageSize:parseInt(pageSize),
-                   showTitle:Boolean(isSimple),
-                   toolbar:Boolean(isSimple),
-                   search:Boolean(isSimple),
-                   paging:Boolean(isSimple),
-                   header:Boolean(isSimple)
-
-               }}
-           />
-       );
-
+            return adate - bdate;
+          },
+        },
+        //{ title: "ಪ್ರಸ್ತುತ ಸ್ಥಿತಿ", field: "currentstatus" },
+        { title: i18n.t("Notes"), field: "notes" },
+      ]}
+      data={data}
+      title=""
+      options={{
+        pageSizeOptions: [5, 10, 50, data.length],
+        overflowX: "auto",
+        pageSize: parseInt(pageSize),
+        showTitle: Boolean(isSimple),
+        toolbar: Boolean(isSimple),
+        search: Boolean(isSimple),
+        paging: Boolean(isSimple),
+        header: Boolean(isSimple),
+      }}
+    />
+  );
 }

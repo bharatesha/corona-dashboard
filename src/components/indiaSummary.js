@@ -1,17 +1,31 @@
-import React, {useState, useEffect} from 'react';
-import SummaryTiles  from './summaryTiles';
-import {formatDate} from '../utils/common-functions';
+import React, { useState, useEffect } from "react";
+import SummaryTiles from "./summaryTiles";
+import { formatDate } from "../utils/common-functions";
 
-function IndiaSummary({
-statesData,
-lastUpdated
-}){
-
+function IndiaSummary({ statesData, lastUpdated }) {
   const [data, setData] = useState({});
   const [fetched, setFetched] = useState(false);
 
-  function createData(cases, todayCases, deaths, todayDeaths, active, recovered, todayRecovered, updated){
-    return {cases, todayCases, deaths, todayDeaths, active, recovered, todayRecovered, updated}
+  function createData(
+    cases,
+    todayCases,
+    deaths,
+    todayDeaths,
+    active,
+    recovered,
+    todayRecovered,
+    updated
+  ) {
+    return {
+      cases,
+      todayCases,
+      deaths,
+      todayDeaths,
+      active,
+      recovered,
+      todayRecovered,
+      updated,
+    };
   }
 
   useEffect(() => {
@@ -36,21 +50,30 @@ lastUpdated
         }
       });
 
-      setData(createData(confirmed, deltas.confirmed,deaths, deltas.deaths, active,recoveries, deltas.recovered, formatDate(lastUpdated)));
+      setData(
+        createData(
+          confirmed,
+          deltas.confirmed,
+          deaths,
+          deltas.deaths,
+          active,
+          recoveries,
+          deltas.recovered,
+          formatDate(lastUpdated)
+        )
+      );
       setFetched(true);
-
     };
     parseData();
   }, [statesData, lastUpdated]);
 
   return (
-     <div>
-       { fetched && (
-            <SummaryTiles data={data} title="India" tileClass="seagreen" />
-       )}
+    <div>
+      {fetched && (
+        <SummaryTiles data={data} title="India" tileClass="seagreen" />
+      )}
     </div>
   );
-
 }
 
-export default IndiaSummary
+export default IndiaSummary;
