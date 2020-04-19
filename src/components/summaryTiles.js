@@ -17,7 +17,7 @@ function SummaryTiles({
     const worldDetailsButton = (
             <div className="navigationLink">
                  <Button href={link} variant="contained" size="small" disableElevation>
-                   Click Here For {title} More Details
+                    {i18n.t(link)}
                  </Button>
             </div>
           );
