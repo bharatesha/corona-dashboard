@@ -102,13 +102,13 @@ function Home({ props, t }) {
     i18n.changeLanguage(val);
     setLang(val);
     if (val === "kn" && !path.startsWith("/kn")) {
-      history(props).push("/kn/corona?state="+state);
+      history(props).push("/kn/corona?state="+encodeURI(state));
     } else {
-      history(props).push("/corona?state="+state);
+      history(props).push("/corona?state="+encodeURI(state));
     }
   };
 
-  const shareUrl = t("shareUrl")+"?state="+state;
+  const shareUrl = encodeURI(t("shareUrl")+"?state="+state);
   const shareTitle = t("covidShareTitle");
 
   const renderStateSelect = () => {
