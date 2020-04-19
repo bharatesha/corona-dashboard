@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Redirect} from 'react';
 import axios from 'axios';
 import { withNamespaces } from 'react-i18next';
 
@@ -68,19 +68,23 @@ function Home({props,t}) {
   };
 
     const changeLanguage = () => {
-
         let path = history(props).location.pathname;
         if(path === '/kn'){
             i18n.changeLanguage('kn');
             setLang('kn');
         }
-
     }
 
     const handleChange = (event) => {
         let val = event.target.value;
+        let path = history(props).location.pathname;
         i18n.changeLanguage(val);
         setLang(val);
+        if(val === 'kn' && path !=='/kn'){
+            history(props).push('/kn');
+            return;
+        }
+        history(props).push('/')
       };
 
     const shareUrl= t('shareUrl');
