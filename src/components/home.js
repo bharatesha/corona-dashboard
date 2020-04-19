@@ -210,11 +210,14 @@ function Home({ props, t }) {
               lastUpdated={lastUpdated}
             />
 
-            <CoronaTableData
-              state={state}
-              stateDistrictWiseData={stateDistrictWiseData}
-              statePatients={patientStateData}
-            />
+            {stateDistrictWiseData[state] && (
+                <CoronaTableData
+                  state={state}
+                  stateDistrictWiseData={stateDistrictWiseData}
+                  statePatients={patientStateData}
+                />
+            )}
+
             <div
               style={{ marginTop: "50px", width: "100%", marginBottom: "20px" }}
             >
