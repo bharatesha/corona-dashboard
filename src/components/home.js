@@ -39,11 +39,18 @@ function Home({ props, t }) {
 
   const [fetched, setFetched] = useState(false);
 
+  const [isInitOnLoad, SetIsInitOnLoad] = useState(false);
+
   useEffect(() => {
     if (fetched === false) {
       getStates();
     }
-  }, [fetched]);
+
+    if(fetched && patientStateData && !isInitOnLoad ){
+       initOnLoad();
+    }
+
+  }, [fetched, patientStateData, isInitOnLoad]);
 
   const getStates = async () => {
     try {
@@ -86,6 +93,7 @@ function Home({ props, t }) {
       i18n.changeLanguage("kn");
       setLang("kn");
     }
+    SetIsInitOnLoad(true);
   };
 
   const handleLanguageChange = (event) => {
