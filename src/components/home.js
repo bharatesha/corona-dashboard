@@ -80,7 +80,6 @@ function Home({ props, t }) {
   const initOnLoad = () => {
     let path = history(props).location.pathname;
     let stateval = queryString.parse(history(props).location.search).state;
-    console.log(stateval);
     if(stateval)setStateData(stateval);
 
     if (path.startsWith("/kn")) {
@@ -101,7 +100,7 @@ function Home({ props, t }) {
     }
   };
 
-  const shareUrl = t("shareUrl");
+  const shareUrl = t("shareUrl")+"?state="+state;
   const shareTitle = t("covidShareTitle");
 
   const renderStateSelect = () => {
