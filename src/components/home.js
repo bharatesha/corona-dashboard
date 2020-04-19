@@ -58,16 +58,16 @@ function Home({props,t}) {
       setStateDistrictWiseData(stateDistrictWiseResponse.data);
       setActivityLog(updateLogResponse.data);
       setPatientStateData(filterJson(patients.data.raw_data,'detectedstate', 'Karnataka'));
-      changeLanguage();
+      changeLanguageOnLoad();
       setFetched(true);
     } catch (err) {
       console.log(err);
     }
   };
 
-    const changeLanguage = () => {
+    const changeLanguageOnLoad = () => {
         let path = history(props).location.pathname;
-        if(path === '/kn'){
+        if(path === '/kn' || path === '/kn/corona'){
             i18n.changeLanguage('kn');
             setLang('kn');
         }
@@ -78,11 +78,12 @@ function Home({props,t}) {
         let path = history(props).location.pathname;
         i18n.changeLanguage(val);
         setLang(val);
-        if(val === 'kn' && path !=='/kn'){
-            history(props).push('/kn');
-            return;
+        if(val === 'kn' && (path !=='/kn' || path !=='/kn/corona')){
+            history(props).push('/kn/corona');
+        } else{
+            history(props).push('/corona')
         }
-        history(props).push('/')
+
       };
 
     const shareUrl= t('shareUrl');

@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from 'react-router-dom';
 
 import './App.css';
@@ -29,6 +30,12 @@ const pages = [
       animationDelayForNavbar: 0.2,
     },
     {
+      pageLink: '/corona',
+      view: Home,
+      displayName: 'Home',
+      animationDelayForNavbar: 0.2,
+    },
+    {
           pageLink: '/kn',
           view: Home,
           displayName: 'Home',
@@ -36,6 +43,18 @@ const pages = [
     },
     {
           pageLink: '/en',
+          view: Home,
+          displayName: 'Home',
+          animationDelayForNavbar: 0.2,
+    },
+    {
+          pageLink: '/kn/corona',
+          view: Home,
+          displayName: 'Home',
+          animationDelayForNavbar: 0.2,
+    },
+    {
+          pageLink: '/en/corona',
           view: Home,
           displayName: 'Home',
           animationDelayForNavbar: 0.2,
@@ -74,7 +93,7 @@ const pages = [
             <Route
               render={({location}) => (
                 <div className="Almighty-Router">
-
+                  <Route exact path="/" render={() => <Redirect to="/corona" />} />
                   <Switch location={location}>
                     {pages.map((page, i) => {
                       return (
