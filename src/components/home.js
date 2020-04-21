@@ -117,7 +117,7 @@ function Home({ props, t }) {
        stateList.sort();
        return stateList.map((state, v)=>{
             return (
-               <MenuItem value={state} key={state}>{state}</MenuItem>
+               <MenuItem value={state} key={state}>{t(state)}</MenuItem>
             )
        });
 
