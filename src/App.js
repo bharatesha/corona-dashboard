@@ -17,6 +17,7 @@ import Home from "./components/home";
 import WorldDetails from "./components/worldDetails";
 import IndiaDetails from "./components/indiaDetails";
 import PlayGame from "./components/playgame";
+import Zrutha from "./components/zrutha";
 
 const history = require("history").createBrowserHistory;
 
@@ -75,6 +76,12 @@ function App({ t }) {
       view: PlayGame,
       displayName: "PlayGame",
       animationDelayForNavbar: 0.3,
+    },
+    {
+          pageLink: "/zrutha",
+          view: Zrutha,
+          displayName: "Zrutha",
+          animationDelayForNavbar: 0.3,
     },
     {
       pageLink: "/*",

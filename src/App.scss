@@ -3547,3 +3547,9 @@ td {
        max-width:100%;
   }
 }
+
+.pageCenter video {
+  margin-top: 100px;
+  width: 70%;
+  pointer-events: none;
+}
